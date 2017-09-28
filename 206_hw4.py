@@ -152,11 +152,24 @@ class CardTests(unittest.TestCase):
         self.assertEqual(len(d),52)
         self.assertEqual(type(d.pop_card()),type(c))
 
-    def play_war_test_len(self):
+    def play_war_test(self):
         game = play_war_game()
         self.assertEqual(len(game),3)
-        self.assertEqual(type(game[0],str)
-    
+        self.assertEqual(type(game[0]),str)
+
+    def tests_deck(self):
+        #Testing that deck length is updated after calling pop_card
+        d = Deck()
+        d.pop_card()
+        d.pop_card()
+        self.assertEqual(len(d.cards),50)
+        #Testing shuffle and sorted
+        d2 = Deck()
+        c = d2.cards[0]
+        d2.shuffle()
+        self.assertNotEqual(d2.cards[0],c)
+
+
 
 
 
