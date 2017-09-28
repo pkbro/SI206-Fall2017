@@ -5,8 +5,8 @@ import unittest
 # Homework 3 - Code
 
 ##COMMENT YOUR CODE WITH:
-# Section Day/Time:
-# People you worked with:
+# Section Day/Time: 
+# People you worked with: 
 
 ######### DO NOT CHANGE PROVIDED CODE #########
 ### Below is the same cards.py code you saw in lecture.
@@ -24,7 +24,7 @@ class Card(object):
 			self.rank = self.faces[rank]
 		else:
 			self.rank = rank
-		self.rank_num = rank # To handle winning comparison
+		self.rank_num = rank # To handle winning comparison 
 
 	def __str__(self):
 		return "{} of {}".format(self.rank,self.suit)
@@ -56,7 +56,7 @@ class Deck(object):
 	def replace_card(self, card):
 		card_strs = [] # forming an empty list
 		for c in self.cards: # each card in self.cards (the initial list)
-			card_strs.append(c.__str__()) # appends the string that represents that card to the empty list
+			card_strs.append(c.__str__()) # appends the string that represents that card to the empty list 
 		if card.__str__() not in card_strs: # if the string representing this card is not in the list already
 			self.cards.append(card) # append it to the list
 
@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
 ######### DO NOT CHANGE CODE ABOVE THIS LINE #########
 
-## You can write any additional debugging/trying stuff out code here...
+## You can write any additional debugging/trying stuff out code here... 
 ## OK to add debugging print statements, but do NOT change functionality of existing code.
 ## Also OK to add comments!
 
@@ -174,10 +174,6 @@ class CardTests(unittest.TestCase):
 
 
 
-
-
-
-
 ##**##**##**##@##**##**##**## # DO NOT CHANGE OR DELETE THIS COMMENT LINE -- we use it for grading your file
 ###############################################
 
@@ -187,5 +183,5 @@ class CardTests(unittest.TestCase):
 
 #############
 ## The following is a line to run all of the tests you include:
-unittest.main(verbosity=2)
+unittest.main(verbosity=2) 
 ## verbosity 2 to see detail about the tests the code fails/passes/etc.
