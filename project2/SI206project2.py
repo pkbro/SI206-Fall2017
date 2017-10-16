@@ -32,8 +32,6 @@ def find_urls(s):
     return urls
 
 
-
-
 ## PART 2  - Define a function grab_headlines.
 ## INPUT: N/A. No input.
 ## Grab the headlines from the "Most Read" section of
@@ -45,9 +43,8 @@ def grab_headlines():
     headlines = []
     stories =  soup.find_all("ol")
     for story in stories[0].find_all("li"):
-        headlines.append(story.text.replace("\\", ""))
-        print (story.text)
-
+        headlines.append(story.text)
+        
     return headlines
 
 ## PART 3 (a) Define a function called get_umsi_data.  It should create a dictionary
