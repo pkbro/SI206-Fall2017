@@ -22,6 +22,10 @@ import urllib.request, urllib.error, urllib.parse
 ## RETURN VALUE: a list of strings that represents all of the URLs in the input string
 
 
+## Note: I downloaded the updated dictionary for grab_headlines from piazza yet
+## I found a few minor errors. I am aware though that the most up to date data
+## will be used for checking the correctness of the functions. 
+
 ## For example:
 ## find_urls("http://www.google.com is a great site") should return ["http://www.google.com"]
 ## find_urls("I love looking at websites like http://etsy.com and http://instagram.com and stuff") should return ["http://etsy.com","http://instagram.com"]
@@ -44,7 +48,7 @@ def grab_headlines():
     stories =  soup.find_all("ol")
     for story in stories[0].find_all("li"):
         headlines.append(story.text)
-        
+
     return headlines
 
 ## PART 3 (a) Define a function called get_umsi_data.  It should create a dictionary
