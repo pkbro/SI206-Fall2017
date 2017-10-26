@@ -6,7 +6,7 @@ import twitter_info_example
 
 ## SI 206 - HW
 ## COMMENT WITH: Phillip Brown
-## Your section day/time: Thursdays 3pm
+## Your section day/time: Thursday 3pm
 ## Any names of people you worked with on this assignment:
 
 
