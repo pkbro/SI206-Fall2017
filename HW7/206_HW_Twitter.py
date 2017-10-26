@@ -5,7 +5,7 @@ import json
 import twitter_info_example
 
 ## SI 206 - HW
-## COMMENT WITH:
+## COMMENT WITH: Phillip Brown
 ## Your section day/time: Thursdays 3pm
 ## Any names of people you worked with on this assignment:
 
@@ -81,21 +81,39 @@ except:
 def get_twitter_data(term):
 
     if term in cache_diction:
-        print("data is already cached")
+        print("using cache")
         return cache_diction[term]
 
     else:
-        print("making twitter request")
+        print("fetching")
         data = api.search(q=term)
-        return data
+        try:
+            cache_diction[term] = data
+            dumped_json_cache = json.dumps(cache_diction)
+            fw = open(cache_fname, 'w')
+            fw.write(dumped_json_cache)
+            fw.close()
+            return cache_diction[term]
+        except:
+            print("Not in cache and not valid search term")
+            return None
+
 
 ## 3. Using a loop, invoke your function, save the return value in a variable, and explore the
 ##		data you got back!
-user_term = input("Enter Search Term: ")
+tweets_container = {}
 
-while user_term != "quit":
+for i in range(3):
+    user_term = input("Enter Search Term: ")
     result = get_twitter_data(user_term)
-    print(result.text)
+    tweets_container = result['statuses'][:5]
+    for tweet in tweets_container:
+        print("TEXT: " + tweet['text'])
+        print("CREATED AT: " + tweet['created_at'])
+        print('\n')
+
 ## 4. With what you learn from the data -- e.g. how exactly to find the
 ##		text of each tweet in the big nested structure -- write code to print out
 ## 		content from 5 tweets, as shown in the linked example.
+#
+# Answer/code for question 4 is within question 3.
