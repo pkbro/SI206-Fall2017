@@ -6,9 +6,8 @@ html = urllib.request.urlopen(url).read()
 soup = BeautifulSoup(html,"html.parser")
 
 span_tags = soup('span')
-comment_total = 0
-
+comment_total = []
 for span in span_tags:
-    comment_total += int(span.string)
+    comment_total.append(span.string)
 
 print(comment_total)

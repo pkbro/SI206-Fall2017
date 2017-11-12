@@ -56,7 +56,6 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 # Set up library to grab stuff from twitter with your authentication, and
 # return it in a JSON-formatted way
-
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 ## Write the rest of your code here!
