@@ -120,6 +120,7 @@ for user in mentioned_users:
 
 cur.execute('SELECT user_id FROM Users WHERE screen_name == "UMich"')
 um_id = cur.fetchall()[0][0]
+print (um_id)
 
 for tweet in umich_tweets:
     tweet_tup = (tweet['id'], tweet['text'], um_id, tweet['created_at'], tweet['retweet_count'])
@@ -175,19 +176,20 @@ favorites = [x[0] for x in cur.fetchall()]
 # Make a query using an INNER JOIN to get a list of tuples with 2
 # elements in each tuple: the user screenname and the text of the
 # tweet. Save the resulting list of tuples in a variable called joined_data.
-cur.execute('SELECT Users.screen_name, Tweets.text FROM Users INNER JOIN Tweets ON Users.user_id = Tweets.user_posted')
+cur.execute('SELECT DISTINCT Users.screen_name, Tweets.text FROM Users INNER JOIN Tweets ON Users.user_id = Tweets.user_posted')
 joined_data = cur.fetchall()
+print(len(joined_data))
 
 # Make a query using an INNER JOIN to get a list of tuples with 2
 # elements in each tuple: the user screenname and the text of the
 # tweet in descending order based on retweets. Save the resulting
 # list of tuples in a variable called joined_data2.
-cur.execute('SELECT Users.screen_name, Tweets.text, Tweets.retweets FROM Users INNER JOIN Tweets ON Users.user_id = Tweets.user_posted')
+cur.execute('SELECT DISTINCT Users.screen_name, Tweets.text, Tweets.retweets FROM Users INNER JOIN Tweets ON Users.user_id = Tweets.user_posted ORDER BY Tweets.retweets DESC')
 res = cur.fetchall()
-sorted_res = sorted(res, key= lambda x: x[2], reverse=True)
 final_res = []
-for x in sorted_res:
+for x in res:
     final_res.append(x[:2])
+
 joined_data2 = final_res
 
 
