@@ -102,7 +102,7 @@ cur = conn.cursor()
 cur.execute('DROP TABLE IF EXISTS Tweets')
 cur.execute('DROP TABLE IF EXISTS Users')
 
-cur.execute('CREATE TABLE Tweets (tweet_id TEXT, text TEXT, user_posted TEXT, time_posted TIMESTAMP, retweets NUMBER)')
+cur.execute('CREATE TABLE Tweets (tweet_id TEXT, text TEXT, user_posted TEXT, time_posted DATETIME, retweets NUMBER)')
 cur.execute('CREATE TABLE Users (user_id TEXT, screen_name TEXT, num_favs NUMBER, description TEXT)')
 
 ## You should load into the Tweets table:
@@ -120,7 +120,7 @@ for user in mentioned_users:
 
 cur.execute('SELECT user_id FROM Users WHERE screen_name == "UMich"')
 um_id = cur.fetchall()[0][0]
-print (um_id)
+
 
 for tweet in umich_tweets:
     tweet_tup = (tweet['id'], tweet['text'], um_id, tweet['created_at'], tweet['retweet_count'])
@@ -178,7 +178,7 @@ favorites = [x[0] for x in cur.fetchall()]
 # tweet. Save the resulting list of tuples in a variable called joined_data.
 cur.execute('SELECT DISTINCT Users.screen_name, Tweets.text FROM Users INNER JOIN Tweets ON Users.user_id = Tweets.user_posted')
 joined_data = cur.fetchall()
-print(len(joined_data))
+
 
 # Make a query using an INNER JOIN to get a list of tuples with 2
 # elements in each tuple: the user screenname and the text of the
