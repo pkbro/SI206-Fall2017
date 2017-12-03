@@ -18,6 +18,7 @@ edge_list = [
     ("C","D"),
     ("A","E"),
     ("E","D"),
+    ("F","A")
 ]
 G.add_edges_from(edge_list)
 nx.draw_networkx(G, with_labels=True)
