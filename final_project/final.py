@@ -35,12 +35,40 @@ from watson_developer_cloud.natural_language_understanding_v1 \
 #       limit=2)))
 #
 # print(json.dumps(response, indent=2))
-
-
-
 graph = GraphAPI(access.fb_token,version='2.8')
 
-hood = graph.get('michiganfball/posts?limit=10')
+
+
+
+CACHE_FNAME = "APIs_cache.json"
+# Put the rest of your caching setup here:
+try:
+    cache_file = open(CACHE_FNAME,'r')
+    cache_contents = cache_file.read()
+    cache_file.close()
+    CACHE_DICTION = json.loads(cache_contents)
+except:
+    CACHE_DICTION = {}
+
+def get_fb_posts(term):
+	if term in CACHE_DICTION:
+		print("using cache")
+	else:
+		print("fetching")
+		data = graph.get('michiganfball/posts?limit=10')
+		try:
+			CACHE_DICTION[term] = data
+			dumped_json_cache = json.dumps(CACHE_DICTION)
+			fw = open(CACHE_FNAME, 'w')
+			fw.write(dumped_json_cache)
+			fw.close()
+		except:
+			print("Not valid")
+
+	return CACHE_DICTION[user]
+
+
+
 
 
 
