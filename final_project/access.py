@@ -1,0 +1,7 @@
+fb_token = "EAAEw330JAdcBAN3wQOIszoytJtuUf1QYsWkKLGOgrLlwMJrhsGgmo8ZBF5UExblicXypHLgEidndl8J4MbAZC6LPRWwg80NOwqbW3QkQWCdI4ADilnFp6NTt39JQPv3YfVp0dvHbecnTiiZBh4pQFZB386AEP0gZD"
+
+git_id = "6ba2972613e94f514870"
+git_secret = "da7d5626b28a1e39131e1eea0c8c19f50a387c8e"
+
+instagram_password = "27354665.9113493.272e128ab3cf44c2a0babb8f1b98cd7c"
+plotly_key = "7XOHtLBNyejURzFDhi5x"
